@@ -1,0 +1,2027 @@
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"app_UART.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.HandleUartRxTraffic,"ax",%progbits
+  18              		.align	2
+  19              		.global	HandleUartRxTraffic
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	HandleUartRxTraffic, %function
+  23              	HandleUartRxTraffic:
+  24              	.LFB37:
+  25              		.file 1 "app_UART.c"
+   1:app_UART.c    **** /*******************************************************************************
+   2:app_UART.c    **** * File Name: app_UART.c
+   3:app_UART.c    **** *
+   4:app_UART.c    **** * Description:
+   5:app_UART.c    **** *  Common BLE application code for client devices.
+   6:app_UART.c    **** *
+   7:app_UART.c    **** *******************************************************************************
+   8:app_UART.c    **** * Copyright 2015, Cypress Semiconductor Corporation.  All rights reserved.
+   9:app_UART.c    **** * You may use this file only in accordance with the license, terms, conditions,
+  10:app_UART.c    **** * disclaimers, and limitations in the end user license agreement accompanying
+  11:app_UART.c    **** * the software package with which this file was provided.
+  12:app_UART.c    **** *******************************************************************************/
+  13:app_UART.c    **** 
+  14:app_UART.c    **** #include "app_UART.h"
+  15:app_UART.c    **** 
+  16:app_UART.c    **** /*******************************************************************************
+  17:app_UART.c    **** * Function Name: HandleUartRxTraffic
+  18:app_UART.c    **** ********************************************************************************
+  19:app_UART.c    **** *
+  20:app_UART.c    **** * Summary:
+  21:app_UART.c    **** *  This function takes data from received notfications and pushes it to the 
+  22:app_UART.c    **** *  UART TX buffer. 
+  23:app_UART.c    **** *
+  24:app_UART.c    **** * Parameters:
+  25:app_UART.c    **** *  CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T * - the notification parameter as  
+  26:app_UART.c    **** *                                           recieved by the BLE stack
+  27:app_UART.c    **** *
+  28:app_UART.c    **** * Return:
+  29:app_UART.c    **** *   None.
+  30:app_UART.c    **** *
+  31:app_UART.c    **** *******************************************************************************/
+  32:app_UART.c    **** void HandleUartRxTraffic(CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T *uartRxDataNotification)
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 2
+
+
+  33:app_UART.c    **** {
+  26              		.loc 1 33 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 82B0     		sub	sp, sp, #8
+  33              		.cfi_def_cfa_offset 16
+  34 0004 00AF     		add	r7, sp, #0
+  35              		.cfi_def_cfa_register 7
+  36 0006 7860     		str	r0, [r7, #4]
+  34:app_UART.c    ****     if(uartRxDataNotification->handleValPair.attrHandle == txCharHandle)
+  37              		.loc 1 34 0
+  38 0008 7B68     		ldr	r3, [r7, #4]
+  39 000a 9A89     		ldrh	r2, [r3, #12]
+  40 000c 074B     		ldr	r3, .L3
+  41 000e 1B88     		ldrh	r3, [r3]
+  42 0010 9A42     		cmp	r2, r3
+  43 0012 07D1     		bne	.L1
+  35:app_UART.c    ****     {
+  36:app_UART.c    ****         UART_SpiUartPutArray(uartRxDataNotification->handleValPair.value.val, \
+  44              		.loc 1 36 0
+  45 0014 7B68     		ldr	r3, [r7, #4]
+  46 0016 5A68     		ldr	r2, [r3, #4]
+  37:app_UART.c    ****             (uint32) uartRxDataNotification->handleValPair.value.len);
+  47              		.loc 1 37 0
+  48 0018 7B68     		ldr	r3, [r7, #4]
+  49 001a 1B89     		ldrh	r3, [r3, #8]
+  36:app_UART.c    ****             (uint32) uartRxDataNotification->handleValPair.value.len);
+  50              		.loc 1 36 0
+  51 001c 101C     		mov	r0, r2
+  52 001e 191C     		mov	r1, r3
+  53 0020 FFF7FEFF 		bl	UART_SpiUartPutArray
+  54              	.L1:
+  38:app_UART.c    ****     }
+  39:app_UART.c    **** }
+  55              		.loc 1 39 0
+  56 0024 BD46     		mov	sp, r7
+  57 0026 02B0     		add	sp, sp, #8
+  58              		@ sp needed
+  59 0028 80BD     		pop	{r7, pc}
+  60              	.L4:
+  61 002a C046     		.align	2
+  62              	.L3:
+  63 002c 00000000 		.word	txCharHandle
+  64              		.cfi_endproc
+  65              	.LFE37:
+  66              		.size	HandleUartRxTraffic, .-HandleUartRxTraffic
+  67              		.section	.text.HandleUartTxTraffic,"ax",%progbits
+  68              		.align	2
+  69              		.global	HandleUartTxTraffic
+  70              		.code	16
+  71              		.thumb_func
+  72              		.type	HandleUartTxTraffic, %function
+  73              	HandleUartTxTraffic:
+  74              	.LFB38:
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 3
+
+
+  40:app_UART.c    **** 
+  41:app_UART.c    **** 
+  42:app_UART.c    **** /*******************************************************************************
+  43:app_UART.c    **** * Function Name: HandleUartTxTraffic
+  44:app_UART.c    **** ********************************************************************************
+  45:app_UART.c    **** *
+  46:app_UART.c    **** * Summary:
+  47:app_UART.c    **** *  This function takes data from UART RX buffer and pushes it to the server 
+  48:app_UART.c    **** *  as Write Without Response command.
+  49:app_UART.c    **** *
+  50:app_UART.c    **** * Parameters:
+  51:app_UART.c    **** *  None.
+  52:app_UART.c    **** *
+  53:app_UART.c    **** * Return:
+  54:app_UART.c    **** *   None.
+  55:app_UART.c    **** *
+  56:app_UART.c    **** *******************************************************************************/
+  57:app_UART.c    **** void HandleUartTxTraffic(void)
+  58:app_UART.c    **** {
+  75              		.loc 1 58 0
+  76              		.cfi_startproc
+  77 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  78              		.cfi_def_cfa_offset 20
+  79              		.cfi_offset 4, -20
+  80              		.cfi_offset 5, -16
+  81              		.cfi_offset 6, -12
+  82              		.cfi_offset 7, -8
+  83              		.cfi_offset 14, -4
+  84 0002 8FB0     		sub	sp, sp, #60
+  85              		.cfi_def_cfa_offset 80
+  86 0004 00AF     		add	r7, sp, #0
+  87              		.cfi_def_cfa_register 7
+  88 0006 6846     		mov	r0, sp
+  89 0008 7860     		str	r0, [r7, #4]
+  59:app_UART.c    ****     uint8   index;
+  60:app_UART.c    ****     uint8   uartTxData[mtuSize - 3];
+  90              		.loc 1 60 0
+  91 000a 7648     		ldr	r0, .L14
+  92 000c 0088     		ldrh	r0, [r0]
+  93 000e 0338     		sub	r0, r0, #3
+  94 0010 431E     		sub	r3, r0, #1
+  95 0012 9C46     		mov	ip, r3
+  96 0014 6346     		mov	r3, ip
+  97 0016 3B63     		str	r3, [r7, #48]
+  98 0018 031C     		mov	r3, r0
+  99 001a 3B61     		str	r3, [r7, #16]
+ 100 001c 0023     		mov	r3, #0
+ 101 001e 7B61     		str	r3, [r7, #20]
+ 102 0020 3B69     		ldr	r3, [r7, #16]
+ 103 0022 5B0F     		lsr	r3, r3, #29
+ 104 0024 9C46     		mov	ip, r3
+ 105 0026 7B69     		ldr	r3, [r7, #20]
+ 106 0028 DA00     		lsl	r2, r3, #3
+ 107 002a 6346     		mov	r3, ip
+ 108 002c 1A43     		orr	r2, r3
+ 109 002e 3B69     		ldr	r3, [r7, #16]
+ 110 0030 D900     		lsl	r1, r3, #3
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 4
+
+
+ 111 0032 021C     		mov	r2, r0
+ 112 0034 151C     		mov	r5, r2
+ 113 0036 0022     		mov	r2, #0
+ 114 0038 161C     		mov	r6, r2
+ 115 003a 6A0F     		lsr	r2, r5, #29
+ 116 003c F300     		lsl	r3, r6, #3
+ 117 003e FB60     		str	r3, [r7, #12]
+ 118 0040 FB68     		ldr	r3, [r7, #12]
+ 119 0042 1343     		orr	r3, r2
+ 120 0044 FB60     		str	r3, [r7, #12]
+ 121 0046 EB00     		lsl	r3, r5, #3
+ 122 0048 BB60     		str	r3, [r7, #8]
+ 123 004a 031C     		mov	r3, r0
+ 124 004c 0733     		add	r3, r3, #7
+ 125 004e DB08     		lsr	r3, r3, #3
+ 126 0050 DB00     		lsl	r3, r3, #3
+ 127 0052 6A46     		mov	r2, sp
+ 128 0054 D31A     		sub	r3, r2, r3
+ 129 0056 9D46     		mov	sp, r3
+ 130 0058 6B46     		mov	r3, sp
+ 131 005a 0033     		add	r3, r3, #0
+ 132 005c FB62     		str	r3, [r7, #44]
+  61:app_UART.c    ****     uint16  uartTxDataLength;
+  62:app_UART.c    ****     
+  63:app_UART.c    ****     static uint16 uartIdleCount = UART_IDLE_TIMEOUT;
+  64:app_UART.c    ****     
+  65:app_UART.c    ****     CYBLE_API_RESULT_T              bleApiResult;
+  66:app_UART.c    ****     CYBLE_GATTC_WRITE_CMD_REQ_T     uartTxDataWriteCmd;
+  67:app_UART.c    ****     
+  68:app_UART.c    ****     uartTxDataLength = UART_SpiUartGetRxBufferSize();
+ 133              		.loc 1 68 0
+ 134 005e FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 135 0062 021C     		mov	r2, r0
+ 136 0064 1C23     		mov	r3, #28
+ 137 0066 1821     		mov	r1, #24
+ 138 0068 8C46     		mov	ip, r1
+ 139 006a BC44     		add	ip, ip, r7
+ 140 006c 6344     		add	r3, r3, ip
+ 141 006e 1A80     		strh	r2, [r3]
+  69:app_UART.c    ****     
+  70:app_UART.c    ****     #ifdef FLOW_CONTROL
+  71:app_UART.c    ****         if(uartTxDataLength >= (UART_UART_RX_BUFFER_SIZE - (UART_UART_RX_BUFFER_SIZE/2)))
+ 142              		.loc 1 71 0
+ 143 0070 1C23     		mov	r3, #28
+ 144 0072 1822     		mov	r2, #24
+ 145 0074 9446     		mov	ip, r2
+ 146 0076 BC44     		add	ip, ip, r7
+ 147 0078 6344     		add	r3, r3, ip
+ 148 007a 1B88     		ldrh	r3, [r3]
+ 149 007c 5A4A     		ldr	r2, .L14+4
+ 150 007e 9342     		cmp	r3, r2
+ 151 0080 02D9     		bls	.L6
+  72:app_UART.c    ****         {
+  73:app_UART.c    ****             DisableUartRxInt();
+ 152              		.loc 1 73 0
+ 153 0082 FFF7FEFF 		bl	DisableUartRxInt
+ 154 0086 01E0     		b	.L7
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 5
+
+
+ 155              	.L6:
+  74:app_UART.c    ****         }
+  75:app_UART.c    ****         else
+  76:app_UART.c    ****         {
+  77:app_UART.c    ****             EnableUartRxInt();
+ 156              		.loc 1 77 0
+ 157 0088 FFF7FEFF 		bl	EnableUartRxInt
+ 158              	.L7:
+  78:app_UART.c    ****         }
+  79:app_UART.c    ****     #endif
+  80:app_UART.c    ****     
+  81:app_UART.c    ****     if((uartTxDataLength != 0))
+ 159              		.loc 1 81 0
+ 160 008c 1C23     		mov	r3, #28
+ 161 008e 1822     		mov	r2, #24
+ 162 0090 9446     		mov	ip, r2
+ 163 0092 BC44     		add	ip, ip, r7
+ 164 0094 6344     		add	r3, r3, ip
+ 165 0096 1B88     		ldrh	r3, [r3]
+ 166 0098 002B     		cmp	r3, #0
+ 167 009a 00D1     		bne	.LCB140
+ 168 009c 9DE0     		b	.L8	@long jump
+ 169              	.LCB140:
+  82:app_UART.c    ****     {
+  83:app_UART.c    ****         if(uartTxDataLength >= (mtuSize - 3))
+ 170              		.loc 1 83 0
+ 171 009e 1C23     		mov	r3, #28
+ 172 00a0 1822     		mov	r2, #24
+ 173 00a2 9446     		mov	ip, r2
+ 174 00a4 BC44     		add	ip, ip, r7
+ 175 00a6 6344     		add	r3, r3, ip
+ 176 00a8 1A88     		ldrh	r2, [r3]
+ 177 00aa 4E4B     		ldr	r3, .L14
+ 178 00ac 1B88     		ldrh	r3, [r3]
+ 179 00ae 033B     		sub	r3, r3, #3
+ 180 00b0 9A42     		cmp	r2, r3
+ 181 00b2 0DDB     		blt	.L9
+  84:app_UART.c    ****         {
+  85:app_UART.c    ****             uartIdleCount       = UART_IDLE_TIMEOUT;
+ 182              		.loc 1 85 0
+ 183 00b4 4D4B     		ldr	r3, .L14+8
+ 184 00b6 FA22     		mov	r2, #250
+ 185 00b8 9200     		lsl	r2, r2, #2
+ 186 00ba 1A80     		strh	r2, [r3]
+  86:app_UART.c    ****             uartTxDataLength    = mtuSize - 3;
+ 187              		.loc 1 86 0
+ 188 00bc 494B     		ldr	r3, .L14
+ 189 00be 1A88     		ldrh	r2, [r3]
+ 190 00c0 1C23     		mov	r3, #28
+ 191 00c2 1821     		mov	r1, #24
+ 192 00c4 8C46     		mov	ip, r1
+ 193 00c6 BC44     		add	ip, ip, r7
+ 194 00c8 6344     		add	r3, r3, ip
+ 195 00ca 033A     		sub	r2, r2, #3
+ 196 00cc 1A80     		strh	r2, [r3]
+ 197 00ce 10E0     		b	.L10
+ 198              	.L9:
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 6
+
+
+  87:app_UART.c    ****         }
+  88:app_UART.c    ****         else
+  89:app_UART.c    ****         {
+  90:app_UART.c    ****             if(--uartIdleCount == 0)
+ 199              		.loc 1 90 0
+ 200 00d0 464B     		ldr	r3, .L14+8
+ 201 00d2 1B88     		ldrh	r3, [r3]
+ 202 00d4 013B     		sub	r3, r3, #1
+ 203 00d6 9AB2     		uxth	r2, r3
+ 204 00d8 444B     		ldr	r3, .L14+8
+ 205 00da 1A80     		strh	r2, [r3]
+ 206 00dc 434B     		ldr	r3, .L14+8
+ 207 00de 1B88     		ldrh	r3, [r3]
+ 208 00e0 002B     		cmp	r3, #0
+ 209 00e2 06D0     		beq	.L10
+  91:app_UART.c    ****             {
+  92:app_UART.c    ****                 /*uartTxDataLength remains unchanged */;
+  93:app_UART.c    ****             }
+  94:app_UART.c    ****             else
+  95:app_UART.c    ****             {
+  96:app_UART.c    ****                 uartTxDataLength = 0;
+ 210              		.loc 1 96 0
+ 211 00e4 1C23     		mov	r3, #28
+ 212 00e6 1822     		mov	r2, #24
+ 213 00e8 9446     		mov	ip, r2
+ 214 00ea BC44     		add	ip, ip, r7
+ 215 00ec 6344     		add	r3, r3, ip
+ 216 00ee 0022     		mov	r2, #0
+ 217 00f0 1A80     		strh	r2, [r3]
+ 218              	.L10:
+  97:app_UART.c    ****             }
+  98:app_UART.c    ****         }
+  99:app_UART.c    ****         
+ 100:app_UART.c    ****         if(0 != uartTxDataLength)
+ 219              		.loc 1 100 0
+ 220 00f2 1C23     		mov	r3, #28
+ 221 00f4 1822     		mov	r2, #24
+ 222 00f6 9446     		mov	ip, r2
+ 223 00f8 BC44     		add	ip, ip, r7
+ 224 00fa 6344     		add	r3, r3, ip
+ 225 00fc 1B88     		ldrh	r3, [r3]
+ 226 00fe 002B     		cmp	r3, #0
+ 227 0100 6BD0     		beq	.L8
+ 101:app_UART.c    ****         {
+ 102:app_UART.c    ****             uartIdleCount       = UART_IDLE_TIMEOUT;
+ 228              		.loc 1 102 0
+ 229 0102 3A4B     		ldr	r3, .L14+8
+ 230 0104 FA22     		mov	r2, #250
+ 231 0106 9200     		lsl	r2, r2, #2
+ 232 0108 1A80     		strh	r2, [r3]
+ 103:app_UART.c    ****             
+ 104:app_UART.c    ****             for(index = 0; index < uartTxDataLength; index++)
+ 233              		.loc 1 104 0
+ 234 010a 1F23     		mov	r3, #31
+ 235 010c 1822     		mov	r2, #24
+ 236 010e 9446     		mov	ip, r2
+ 237 0110 BC44     		add	ip, ip, r7
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 7
+
+
+ 238 0112 6344     		add	r3, r3, ip
+ 239 0114 0022     		mov	r2, #0
+ 240 0116 1A70     		strb	r2, [r3]
+ 241 0118 18E0     		b	.L11
+ 242              	.L12:
+ 105:app_UART.c    ****             {
+ 106:app_UART.c    ****                 uartTxData[index] = (uint8) UART_UartGetByte();
+ 243              		.loc 1 106 0 discriminator 3
+ 244 011a 1F23     		mov	r3, #31
+ 245 011c 1822     		mov	r2, #24
+ 246 011e 9446     		mov	ip, r2
+ 247 0120 BC44     		add	ip, ip, r7
+ 248 0122 6344     		add	r3, r3, ip
+ 249 0124 1C78     		ldrb	r4, [r3]
+ 250 0126 FFF7FEFF 		bl	UART_UartGetByte
+ 251 012a 031C     		mov	r3, r0
+ 252 012c DAB2     		uxtb	r2, r3
+ 253 012e FB6A     		ldr	r3, [r7, #44]
+ 254 0130 1A55     		strb	r2, [r3, r4]
+ 104:app_UART.c    ****             {
+ 255              		.loc 1 104 0 discriminator 3
+ 256 0132 1F23     		mov	r3, #31
+ 257 0134 1822     		mov	r2, #24
+ 258 0136 9446     		mov	ip, r2
+ 259 0138 BC44     		add	ip, ip, r7
+ 260 013a 6344     		add	r3, r3, ip
+ 261 013c 1A78     		ldrb	r2, [r3]
+ 262 013e 1F23     		mov	r3, #31
+ 263 0140 1821     		mov	r1, #24
+ 264 0142 8C46     		mov	ip, r1
+ 265 0144 BC44     		add	ip, ip, r7
+ 266 0146 6344     		add	r3, r3, ip
+ 267 0148 0132     		add	r2, r2, #1
+ 268 014a 1A70     		strb	r2, [r3]
+ 269              	.L11:
+ 104:app_UART.c    ****             {
+ 270              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 271 014c 1F23     		mov	r3, #31
+ 272 014e 1822     		mov	r2, #24
+ 273 0150 9446     		mov	ip, r2
+ 274 0152 BC44     		add	ip, ip, r7
+ 275 0154 6344     		add	r3, r3, ip
+ 276 0156 1B78     		ldrb	r3, [r3]
+ 277 0158 9BB2     		uxth	r3, r3
+ 278 015a 1C22     		mov	r2, #28
+ 279 015c 1821     		mov	r1, #24
+ 280 015e 8C46     		mov	ip, r1
+ 281 0160 BC44     		add	ip, ip, r7
+ 282 0162 6244     		add	r2, r2, ip
+ 283 0164 1288     		ldrh	r2, [r2]
+ 284 0166 9A42     		cmp	r2, r3
+ 285 0168 D7D8     		bhi	.L12
+ 107:app_UART.c    ****             }
+ 108:app_UART.c    ****             
+ 109:app_UART.c    ****             uartTxDataWriteCmd.attrHandle = rxCharHandle;
+ 286              		.loc 1 109 0 is_stmt 1
+ 287 016a 214B     		ldr	r3, .L14+12
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 8
+
+
+ 288 016c 1A88     		ldrh	r2, [r3]
+ 289 016e 1C23     		mov	r3, #28
+ 290 0170 FB18     		add	r3, r7, r3
+ 291 0172 1A81     		strh	r2, [r3, #8]
+ 110:app_UART.c    ****             uartTxDataWriteCmd.value.len  = uartTxDataLength;
+ 292              		.loc 1 110 0
+ 293 0174 1C23     		mov	r3, #28
+ 294 0176 FB18     		add	r3, r7, r3
+ 295 0178 1C22     		mov	r2, #28
+ 296 017a 1821     		mov	r1, #24
+ 297 017c 8C46     		mov	ip, r1
+ 298 017e BC44     		add	ip, ip, r7
+ 299 0180 6244     		add	r2, r2, ip
+ 300 0182 1288     		ldrh	r2, [r2]
+ 301 0184 9A80     		strh	r2, [r3, #4]
+ 111:app_UART.c    ****             uartTxDataWriteCmd.value.val  = uartTxData;           
+ 302              		.loc 1 111 0
+ 303 0186 FA6A     		ldr	r2, [r7, #44]
+ 304 0188 1C23     		mov	r3, #28
+ 305 018a FB18     		add	r3, r7, r3
+ 306 018c 1A60     		str	r2, [r3]
+ 112:app_UART.c    ****             
+ 113:app_UART.c    ****             #ifdef FLOW_CONTROL
+ 114:app_UART.c    ****                 DisableUartRxInt();
+ 307              		.loc 1 114 0
+ 308 018e FFF7FEFF 		bl	DisableUartRxInt
+ 309              	.L13:
+ 115:app_UART.c    ****             #endif
+ 116:app_UART.c    ****             
+ 117:app_UART.c    ****             do
+ 118:app_UART.c    ****             {
+ 119:app_UART.c    ****                 bleApiResult = CyBle_GattcWriteWithoutResponse(cyBle_connHandle, &uartTxDataWriteCm
+ 310              		.loc 1 119 0 discriminator 2
+ 311 0192 1223     		mov	r3, #18
+ 312 0194 1822     		mov	r2, #24
+ 313 0196 BA18     		add	r2, r7, r2
+ 314 0198 D418     		add	r4, r2, r3
+ 315 019a 164B     		ldr	r3, .L14+16
+ 316 019c 1C22     		mov	r2, #28
+ 317 019e B918     		add	r1, r7, r2
+ 318 01a0 1A78     		ldrb	r2, [r3]
+ 319 01a2 5B78     		ldrb	r3, [r3, #1]
+ 320 01a4 1B02     		lsl	r3, r3, #8
+ 321 01a6 1A43     		orr	r2, r3
+ 322 01a8 0023     		mov	r3, #0
+ 323 01aa 1204     		lsl	r2, r2, #16
+ 324 01ac 120C     		lsr	r2, r2, #16
+ 325 01ae 1B0C     		lsr	r3, r3, #16
+ 326 01b0 1B04     		lsl	r3, r3, #16
+ 327 01b2 1343     		orr	r3, r2
+ 328 01b4 181C     		mov	r0, r3
+ 329 01b6 FFF7FEFF 		bl	CyBle_GattcWriteWithoutResponse
+ 330 01ba 031C     		mov	r3, r0
+ 331 01bc 2380     		strh	r3, [r4]
+ 120:app_UART.c    ****                 CyBle_ProcessEvents();
+ 332              		.loc 1 120 0 discriminator 2
+ 333 01be FFF7FEFF 		bl	CyBle_ProcessEvents
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 9
+
+
+ 121:app_UART.c    ****             }
+ 122:app_UART.c    ****             while((CYBLE_ERROR_OK != bleApiResult) && (CYBLE_STATE_CONNECTED == cyBle_state));
+ 334              		.loc 1 122 0 discriminator 2
+ 335 01c2 1223     		mov	r3, #18
+ 336 01c4 1822     		mov	r2, #24
+ 337 01c6 9446     		mov	ip, r2
+ 338 01c8 BC44     		add	ip, ip, r7
+ 339 01ca 6344     		add	r3, r3, ip
+ 340 01cc 1B88     		ldrh	r3, [r3]
+ 341 01ce 002B     		cmp	r3, #0
+ 342 01d0 03D0     		beq	.L8
+ 343              		.loc 1 122 0 is_stmt 0 discriminator 1
+ 344 01d2 094B     		ldr	r3, .L14+20
+ 345 01d4 1B78     		ldrb	r3, [r3]
+ 346 01d6 022B     		cmp	r3, #2
+ 347 01d8 DBD0     		beq	.L13
+ 348              	.L8:
+ 349 01da 7B68     		ldr	r3, [r7, #4]
+ 350 01dc 9D46     		mov	sp, r3
+ 123:app_UART.c    ****             
+ 124:app_UART.c    ****         }
+ 125:app_UART.c    ****     }
+ 126:app_UART.c    **** }
+ 351              		.loc 1 126 0 is_stmt 1
+ 352 01de BD46     		mov	sp, r7
+ 353 01e0 0FB0     		add	sp, sp, #60
+ 354              		@ sp needed
+ 355 01e2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 356              	.L15:
+ 357              		.align	2
+ 358              	.L14:
+ 359 01e4 00000000 		.word	mtuSize
+ 360 01e8 FF030000 		.word	1023
+ 361 01ec 00000000 		.word	uartIdleCount.7221
+ 362 01f0 00000000 		.word	rxCharHandle
+ 363 01f4 00000000 		.word	cyBle_connHandle
+ 364 01f8 00000000 		.word	cyBle_state
+ 365              		.cfi_endproc
+ 366              	.LFE38:
+ 367              		.size	HandleUartTxTraffic, .-HandleUartTxTraffic
+ 368              		.section	.text.DisableUartRxInt,"ax",%progbits
+ 369              		.align	2
+ 370              		.global	DisableUartRxInt
+ 371              		.code	16
+ 372              		.thumb_func
+ 373              		.type	DisableUartRxInt, %function
+ 374              	DisableUartRxInt:
+ 375              	.LFB39:
+ 127:app_UART.c    **** 
+ 128:app_UART.c    **** /*****************************************************************************************
+ 129:app_UART.c    **** * Function Name: DisableUartRxInt
+ 130:app_UART.c    **** ******************************************************************************************
+ 131:app_UART.c    **** *
+ 132:app_UART.c    **** * Summary:
+ 133:app_UART.c    **** *  This function disables the UART RX interrupt.
+ 134:app_UART.c    **** *
+ 135:app_UART.c    **** * Parameters:
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 10
+
+
+ 136:app_UART.c    **** *   None.
+ 137:app_UART.c    **** *
+ 138:app_UART.c    **** * Return:
+ 139:app_UART.c    **** *   None.
+ 140:app_UART.c    **** *
+ 141:app_UART.c    **** *****************************************************************************************/
+ 142:app_UART.c    **** void DisableUartRxInt(void)
+ 143:app_UART.c    **** {
+ 376              		.loc 1 143 0
+ 377              		.cfi_startproc
+ 378 0000 80B5     		push	{r7, lr}
+ 379              		.cfi_def_cfa_offset 8
+ 380              		.cfi_offset 7, -8
+ 381              		.cfi_offset 14, -4
+ 382 0002 00AF     		add	r7, sp, #0
+ 383              		.cfi_def_cfa_register 7
+ 144:app_UART.c    ****     UART_INTR_RX_MASK_REG &= ~UART_RX_INTR_MASK;  
+ 384              		.loc 1 144 0
+ 385 0004 034B     		ldr	r3, .L17
+ 386 0006 034A     		ldr	r2, .L17
+ 387 0008 1268     		ldr	r2, [r2]
+ 388 000a 0421     		mov	r1, #4
+ 389 000c 8A43     		bic	r2, r1
+ 390 000e 1A60     		str	r2, [r3]
+ 145:app_UART.c    **** }
+ 391              		.loc 1 145 0
+ 392 0010 BD46     		mov	sp, r7
+ 393              		@ sp needed
+ 394 0012 80BD     		pop	{r7, pc}
+ 395              	.L18:
+ 396              		.align	2
+ 397              	.L17:
+ 398 0014 C80F2440 		.word	1076105160
+ 399              		.cfi_endproc
+ 400              	.LFE39:
+ 401              		.size	DisableUartRxInt, .-DisableUartRxInt
+ 402              		.section	.text.EnableUartRxInt,"ax",%progbits
+ 403              		.align	2
+ 404              		.global	EnableUartRxInt
+ 405              		.code	16
+ 406              		.thumb_func
+ 407              		.type	EnableUartRxInt, %function
+ 408              	EnableUartRxInt:
+ 409              	.LFB40:
+ 146:app_UART.c    **** 
+ 147:app_UART.c    **** /*****************************************************************************************
+ 148:app_UART.c    **** * Function Name: EnableUartRxInt
+ 149:app_UART.c    **** ******************************************************************************************
+ 150:app_UART.c    **** *
+ 151:app_UART.c    **** * Summary:
+ 152:app_UART.c    **** *  This function enables the UART RX interrupt.
+ 153:app_UART.c    **** *
+ 154:app_UART.c    **** * Parameters:
+ 155:app_UART.c    **** *   None.
+ 156:app_UART.c    **** *
+ 157:app_UART.c    **** * Return:
+ 158:app_UART.c    **** *   None.
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 11
+
+
+ 159:app_UART.c    **** *
+ 160:app_UART.c    **** *****************************************************************************************/
+ 161:app_UART.c    **** void EnableUartRxInt(void)
+ 162:app_UART.c    **** {
+ 410              		.loc 1 162 0
+ 411              		.cfi_startproc
+ 412 0000 80B5     		push	{r7, lr}
+ 413              		.cfi_def_cfa_offset 8
+ 414              		.cfi_offset 7, -8
+ 415              		.cfi_offset 14, -4
+ 416 0002 00AF     		add	r7, sp, #0
+ 417              		.cfi_def_cfa_register 7
+ 163:app_UART.c    ****     UART_INTR_RX_MASK_REG |= UART_RX_INTR_MASK;  
+ 418              		.loc 1 163 0
+ 419 0004 034B     		ldr	r3, .L20
+ 420 0006 034A     		ldr	r2, .L20
+ 421 0008 1268     		ldr	r2, [r2]
+ 422 000a 0421     		mov	r1, #4
+ 423 000c 0A43     		orr	r2, r1
+ 424 000e 1A60     		str	r2, [r3]
+ 164:app_UART.c    **** }
+ 425              		.loc 1 164 0
+ 426 0010 BD46     		mov	sp, r7
+ 427              		@ sp needed
+ 428 0012 80BD     		pop	{r7, pc}
+ 429              	.L21:
+ 430              		.align	2
+ 431              	.L20:
+ 432 0014 C80F2440 		.word	1076105160
+ 433              		.cfi_endproc
+ 434              	.LFE40:
+ 435              		.size	EnableUartRxInt, .-EnableUartRxInt
+ 436              		.data
+ 437              		.align	1
+ 438              		.type	uartIdleCount.7221, %object
+ 439              		.size	uartIdleCount.7221, 2
+ 440              	uartIdleCount.7221:
+ 441 0000 E803     		.short	1000
+ 442              		.text
+ 443              	.Letext0:
+ 444              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 445              		.file 3 "Generated_Source\\PSoC4/BLE_Stack.h"
+ 446              		.file 4 "Generated_Source\\PSoC4/BLE_StackGatt.h"
+ 447              		.file 5 "Generated_Source\\PSoC4/BLE_StackGattClient.h"
+ 448              		.file 6 "Generated_Source\\PSoC4/BLE_eventHandler.h"
+ 449              		.file 7 "app_UART.h"
+ 450              		.section	.debug_info,"",%progbits
+ 451              	.Ldebug_info0:
+ 452 0000 C2030000 		.4byte	0x3c2
+ 453 0004 0400     		.2byte	0x4
+ 454 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 455 000a 04       		.byte	0x4
+ 456 000b 01       		.uleb128 0x1
+ 457 000c F7040000 		.4byte	.LASF86
+ 458 0010 01       		.byte	0x1
+ 459 0011 BA050000 		.4byte	.LASF87
+ 460 0015 5C000000 		.4byte	.LASF88
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 12
+
+
+ 461 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 462 001d 00000000 		.4byte	0
+ 463 0021 00000000 		.4byte	.Ldebug_line0
+ 464 0025 02       		.uleb128 0x2
+ 465 0026 01       		.byte	0x1
+ 466 0027 06       		.byte	0x6
+ 467 0028 C0030000 		.4byte	.LASF0
+ 468 002c 02       		.uleb128 0x2
+ 469 002d 01       		.byte	0x1
+ 470 002e 08       		.byte	0x8
+ 471 002f 8E030000 		.4byte	.LASF1
+ 472 0033 02       		.uleb128 0x2
+ 473 0034 02       		.byte	0x2
+ 474 0035 05       		.byte	0x5
+ 475 0036 D0000000 		.4byte	.LASF2
+ 476 003a 02       		.uleb128 0x2
+ 477 003b 02       		.byte	0x2
+ 478 003c 07       		.byte	0x7
+ 479 003d 91040000 		.4byte	.LASF3
+ 480 0041 02       		.uleb128 0x2
+ 481 0042 04       		.byte	0x4
+ 482 0043 05       		.byte	0x5
+ 483 0044 F9020000 		.4byte	.LASF4
+ 484 0048 02       		.uleb128 0x2
+ 485 0049 04       		.byte	0x4
+ 486 004a 07       		.byte	0x7
+ 487 004b 38060000 		.4byte	.LASF5
+ 488 004f 02       		.uleb128 0x2
+ 489 0050 08       		.byte	0x8
+ 490 0051 05       		.byte	0x5
+ 491 0052 CB020000 		.4byte	.LASF6
+ 492 0056 02       		.uleb128 0x2
+ 493 0057 08       		.byte	0x8
+ 494 0058 07       		.byte	0x7
+ 495 0059 CC030000 		.4byte	.LASF7
+ 496 005d 03       		.uleb128 0x3
+ 497 005e 04       		.byte	0x4
+ 498 005f 05       		.byte	0x5
+ 499 0060 696E7400 		.ascii	"int\000"
+ 500 0064 02       		.uleb128 0x2
+ 501 0065 04       		.byte	0x4
+ 502 0066 07       		.byte	0x7
+ 503 0067 0F040000 		.4byte	.LASF8
+ 504 006b 04       		.uleb128 0x4
+ 505 006c 26020000 		.4byte	.LASF9
+ 506 0070 02       		.byte	0x2
+ 507 0071 B901     		.2byte	0x1b9
+ 508 0073 2C000000 		.4byte	0x2c
+ 509 0077 04       		.uleb128 0x4
+ 510 0078 FB010000 		.4byte	.LASF10
+ 511 007c 02       		.byte	0x2
+ 512 007d BA01     		.2byte	0x1ba
+ 513 007f 3A000000 		.4byte	0x3a
+ 514 0083 04       		.uleb128 0x4
+ 515 0084 31060000 		.4byte	.LASF11
+ 516 0088 02       		.byte	0x2
+ 517 0089 BB01     		.2byte	0x1bb
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 13
+
+
+ 518 008b 48000000 		.4byte	0x48
+ 519 008f 02       		.uleb128 0x2
+ 520 0090 04       		.byte	0x4
+ 521 0091 04       		.byte	0x4
+ 522 0092 B0020000 		.4byte	.LASF12
+ 523 0096 02       		.uleb128 0x2
+ 524 0097 08       		.byte	0x8
+ 525 0098 04       		.byte	0x4
+ 526 0099 55060000 		.4byte	.LASF13
+ 527 009d 02       		.uleb128 0x2
+ 528 009e 01       		.byte	0x1
+ 529 009f 08       		.byte	0x8
+ 530 00a0 B1040000 		.4byte	.LASF14
+ 531 00a4 04       		.uleb128 0x4
+ 532 00a5 68040000 		.4byte	.LASF15
+ 533 00a9 02       		.byte	0x2
+ 534 00aa 6502     		.2byte	0x265
+ 535 00ac B0000000 		.4byte	0xb0
+ 536 00b0 05       		.uleb128 0x5
+ 537 00b1 83000000 		.4byte	0x83
+ 538 00b5 02       		.uleb128 0x2
+ 539 00b6 04       		.byte	0x4
+ 540 00b7 07       		.byte	0x7
+ 541 00b8 DA000000 		.4byte	.LASF16
+ 542 00bc 06       		.uleb128 0x6
+ 543 00bd 02       		.byte	0x2
+ 544 00be 03       		.byte	0x3
+ 545 00bf 0204     		.2byte	0x402
+ 546 00c1 93010000 		.4byte	0x193
+ 547 00c5 07       		.uleb128 0x7
+ 548 00c6 EE000000 		.4byte	.LASF17
+ 549 00ca 00       		.sleb128 0
+ 550 00cb 07       		.uleb128 0x7
+ 551 00cc 9B010000 		.4byte	.LASF18
+ 552 00d0 01       		.sleb128 1
+ 553 00d1 07       		.uleb128 0x7
+ 554 00d2 02020000 		.4byte	.LASF19
+ 555 00d6 02       		.sleb128 2
+ 556 00d7 07       		.uleb128 0x7
+ 557 00d8 C5050000 		.4byte	.LASF20
+ 558 00dc 03       		.sleb128 3
+ 559 00dd 07       		.uleb128 0x7
+ 560 00de 8D020000 		.4byte	.LASF21
+ 561 00e2 04       		.sleb128 4
+ 562 00e3 07       		.uleb128 0x7
+ 563 00e4 B9010000 		.4byte	.LASF22
+ 564 00e8 05       		.sleb128 5
+ 565 00e9 07       		.uleb128 0x7
+ 566 00ea 50020000 		.4byte	.LASF23
+ 567 00ee 06       		.sleb128 6
+ 568 00ef 07       		.uleb128 0x7
+ 569 00f0 4C030000 		.4byte	.LASF24
+ 570 00f4 07       		.sleb128 7
+ 571 00f5 07       		.uleb128 0x7
+ 572 00f6 12030000 		.4byte	.LASF25
+ 573 00fa 08       		.sleb128 8
+ 574 00fb 07       		.uleb128 0x7
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 14
+
+
+ 575 00fc FA030000 		.4byte	.LASF26
+ 576 0100 09       		.sleb128 9
+ 577 0101 07       		.uleb128 0x7
+ 578 0102 73020000 		.4byte	.LASF27
+ 579 0106 0A       		.sleb128 10
+ 580 0107 07       		.uleb128 0x7
+ 581 0108 D9020000 		.4byte	.LASF28
+ 582 010c 0B       		.sleb128 11
+ 583 010d 07       		.uleb128 0x7
+ 584 010e E3030000 		.4byte	.LASF29
+ 585 0112 0C       		.sleb128 12
+ 586 0113 07       		.uleb128 0x7
+ 587 0114 1C040000 		.4byte	.LASF30
+ 588 0118 0D       		.sleb128 13
+ 589 0119 07       		.uleb128 0x7
+ 590 011a 25000000 		.4byte	.LASF31
+ 591 011e 0E       		.sleb128 14
+ 592 011f 07       		.uleb128 0x7
+ 593 0120 00000000 		.4byte	.LASF32
+ 594 0124 0F       		.sleb128 15
+ 595 0125 07       		.uleb128 0x7
+ 596 0126 8A070000 		.4byte	.LASF33
+ 597 012a 10       		.sleb128 16
+ 598 012b 07       		.uleb128 0x7
+ 599 012c A1000000 		.4byte	.LASF34
+ 600 0130 11       		.sleb128 17
+ 601 0131 07       		.uleb128 0x7
+ 602 0132 B4060000 		.4byte	.LASF35
+ 603 0136 12       		.sleb128 18
+ 604 0137 07       		.uleb128 0x7
+ 605 0138 62070000 		.4byte	.LASF36
+ 606 013c 13       		.sleb128 19
+ 607 013d 07       		.uleb128 0x7
+ 608 013e F0060000 		.4byte	.LASF37
+ 609 0142 27       		.sleb128 39
+ 610 0143 07       		.uleb128 0x7
+ 611 0144 FD000000 		.4byte	.LASF38
+ 612 0148 28       		.sleb128 40
+ 613 0149 07       		.uleb128 0x7
+ 614 014a 12070000 		.4byte	.LASF39
+ 615 014e 29       		.sleb128 41
+ 616 014f 07       		.uleb128 0x7
+ 617 0150 22010000 		.4byte	.LASF40
+ 618 0154 2A       		.sleb128 42
+ 619 0155 07       		.uleb128 0x7
+ 620 0156 FE050000 		.4byte	.LASF41
+ 621 015a 2B       		.sleb128 43
+ 622 015b 07       		.uleb128 0x7
+ 623 015c 9C030000 		.4byte	.LASF42
+ 624 0160 2C       		.sleb128 44
+ 625 0161 07       		.uleb128 0x7
+ 626 0162 85050000 		.4byte	.LASF43
+ 627 0166 FE01     		.sleb128 254
+ 628 0168 07       		.uleb128 0x7
+ 629 0169 2E070000 		.4byte	.LASF44
+ 630 016d FF01     		.sleb128 255
+ 631 016f 07       		.uleb128 0x7
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 15
+
+
+ 632 0170 D7060000 		.4byte	.LASF45
+ 633 0174 8002     		.sleb128 256
+ 634 0176 07       		.uleb128 0x7
+ 635 0177 B8070000 		.4byte	.LASF46
+ 636 017b 8102     		.sleb128 257
+ 637 017d 07       		.uleb128 0x7
+ 638 017e 6E040000 		.4byte	.LASF47
+ 639 0182 8202     		.sleb128 258
+ 640 0184 07       		.uleb128 0x7
+ 641 0185 3E070000 		.4byte	.LASF48
+ 642 0189 8302     		.sleb128 259
+ 643 018b 07       		.uleb128 0x7
+ 644 018c CD040000 		.4byte	.LASF49
+ 645 0190 8402     		.sleb128 260
+ 646 0192 00       		.byte	0
+ 647 0193 04       		.uleb128 0x4
+ 648 0194 2C020000 		.4byte	.LASF50
+ 649 0198 03       		.byte	0x3
+ 650 0199 7104     		.2byte	0x471
+ 651 019b BC000000 		.4byte	0xbc
+ 652 019f 08       		.uleb128 0x8
+ 653 01a0 04       		.byte	0x4
+ 654 01a1 6B000000 		.4byte	0x6b
+ 655 01a5 04       		.uleb128 0x4
+ 656 01a6 5D010000 		.4byte	.LASF51
+ 657 01aa 04       		.byte	0x4
+ 658 01ab 8901     		.2byte	0x189
+ 659 01ad 77000000 		.4byte	0x77
+ 660 01b1 09       		.uleb128 0x9
+ 661 01b2 02       		.byte	0x2
+ 662 01b3 04       		.byte	0x4
+ 663 01b4 9301     		.2byte	0x193
+ 664 01b6 D5010000 		.4byte	0x1d5
+ 665 01ba 0A       		.uleb128 0xa
+ 666 01bb 6A020000 		.4byte	.LASF52
+ 667 01bf 04       		.byte	0x4
+ 668 01c0 9A01     		.2byte	0x19a
+ 669 01c2 6B000000 		.4byte	0x6b
+ 670 01c6 00       		.byte	0
+ 671 01c7 0A       		.uleb128 0xa
+ 672 01c8 08080000 		.4byte	.LASF53
+ 673 01cc 04       		.byte	0x4
+ 674 01cd A001     		.2byte	0x1a0
+ 675 01cf 6B000000 		.4byte	0x6b
+ 676 01d3 01       		.byte	0x1
+ 677 01d4 00       		.byte	0
+ 678 01d5 04       		.uleb128 0x4
+ 679 01d6 70060000 		.4byte	.LASF54
+ 680 01da 04       		.byte	0x4
+ 681 01db A201     		.2byte	0x1a2
+ 682 01dd B1010000 		.4byte	0x1b1
+ 683 01e1 09       		.uleb128 0x9
+ 684 01e2 08       		.byte	0x8
+ 685 01e3 04       		.byte	0x4
+ 686 01e4 BE01     		.2byte	0x1be
+ 687 01e6 12020000 		.4byte	0x212
+ 688 01ea 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 16
+
+
+ 689 01eb 76616C00 		.ascii	"val\000"
+ 690 01ef 04       		.byte	0x4
+ 691 01f0 C101     		.2byte	0x1c1
+ 692 01f2 9F010000 		.4byte	0x19f
+ 693 01f6 00       		.byte	0
+ 694 01f7 0B       		.uleb128 0xb
+ 695 01f8 6C656E00 		.ascii	"len\000"
+ 696 01fc 04       		.byte	0x4
+ 697 01fd C401     		.2byte	0x1c4
+ 698 01ff 77000000 		.4byte	0x77
+ 699 0203 04       		.byte	0x4
+ 700 0204 0A       		.uleb128 0xa
+ 701 0205 58070000 		.4byte	.LASF55
+ 702 0209 04       		.byte	0x4
+ 703 020a CB01     		.2byte	0x1cb
+ 704 020c 77000000 		.4byte	0x77
+ 705 0210 06       		.byte	0x6
+ 706 0211 00       		.byte	0
+ 707 0212 04       		.uleb128 0x4
+ 708 0213 E4040000 		.4byte	.LASF56
+ 709 0217 04       		.byte	0x4
+ 710 0218 CD01     		.2byte	0x1cd
+ 711 021a E1010000 		.4byte	0x1e1
+ 712 021e 09       		.uleb128 0x9
+ 713 021f 0C       		.byte	0xc
+ 714 0220 04       		.byte	0x4
+ 715 0221 D001     		.2byte	0x1d0
+ 716 0223 42020000 		.4byte	0x242
+ 717 0227 0A       		.uleb128 0xa
+ 718 0228 D7010000 		.4byte	.LASF57
+ 719 022c 04       		.byte	0x4
+ 720 022d D301     		.2byte	0x1d3
+ 721 022f 12020000 		.4byte	0x212
+ 722 0233 00       		.byte	0
+ 723 0234 0A       		.uleb128 0xa
+ 724 0235 4A060000 		.4byte	.LASF58
+ 725 0239 04       		.byte	0x4
+ 726 023a D601     		.2byte	0x1d6
+ 727 023c A5010000 		.4byte	0x1a5
+ 728 0240 08       		.byte	0x8
+ 729 0241 00       		.byte	0
+ 730 0242 04       		.uleb128 0x4
+ 731 0243 84060000 		.4byte	.LASF59
+ 732 0247 04       		.byte	0x4
+ 733 0248 D801     		.2byte	0x1d8
+ 734 024a 1E020000 		.4byte	0x21e
+ 735 024e 0C       		.uleb128 0xc
+ 736 024f 30030000 		.4byte	.LASF60
+ 737 0253 05       		.byte	0x5
+ 738 0254 77       		.byte	0x77
+ 739 0255 42020000 		.4byte	0x242
+ 740 0259 0D       		.uleb128 0xd
+ 741 025a 10       		.byte	0x10
+ 742 025b 05       		.byte	0x5
+ 743 025c 8B       		.byte	0x8b
+ 744 025d 7A020000 		.4byte	0x27a
+ 745 0261 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 17
+
+
+ 746 0262 E3000000 		.4byte	.LASF61
+ 747 0266 05       		.byte	0x5
+ 748 0267 8E       		.byte	0x8e
+ 749 0268 D5010000 		.4byte	0x1d5
+ 750 026c 00       		.byte	0
+ 751 026d 0E       		.uleb128 0xe
+ 752 026e 4E000000 		.4byte	.LASF62
+ 753 0272 05       		.byte	0x5
+ 754 0273 91       		.byte	0x91
+ 755 0274 42020000 		.4byte	0x242
+ 756 0278 04       		.byte	0x4
+ 757 0279 00       		.byte	0
+ 758 027a 0C       		.uleb128 0xc
+ 759 027b 69030000 		.4byte	.LASF63
+ 760 027f 05       		.byte	0x5
+ 761 0280 93       		.byte	0x93
+ 762 0281 59020000 		.4byte	0x259
+ 763 0285 06       		.uleb128 0x6
+ 764 0286 01       		.byte	0x1
+ 765 0287 06       		.byte	0x6
+ 766 0288 5008     		.2byte	0x850
+ 767 028a B3020000 		.4byte	0x2b3
+ 768 028e 07       		.uleb128 0x7
+ 769 028f 87010000 		.4byte	.LASF64
+ 770 0293 00       		.sleb128 0
+ 771 0294 07       		.uleb128 0x7
+ 772 0295 A1050000 		.4byte	.LASF65
+ 773 0299 01       		.sleb128 1
+ 774 029a 07       		.uleb128 0x7
+ 775 029b DD010000 		.4byte	.LASF66
+ 776 029f 02       		.sleb128 2
+ 777 02a0 07       		.uleb128 0x7
+ 778 02a1 B6020000 		.4byte	.LASF67
+ 779 02a5 03       		.sleb128 3
+ 780 02a6 07       		.uleb128 0x7
+ 781 02a7 E4070000 		.4byte	.LASF68
+ 782 02ab 04       		.sleb128 4
+ 783 02ac 07       		.uleb128 0x7
+ 784 02ad 41040000 		.4byte	.LASF69
+ 785 02b1 05       		.sleb128 5
+ 786 02b2 00       		.byte	0
+ 787 02b3 04       		.uleb128 0x4
+ 788 02b4 5A040000 		.4byte	.LASF70
+ 789 02b8 06       		.byte	0x6
+ 790 02b9 5E08     		.2byte	0x85e
+ 791 02bb 85020000 		.4byte	0x285
+ 792 02bf 0F       		.uleb128 0xf
+ 793 02c0 EA050000 		.4byte	.LASF71
+ 794 02c4 01       		.byte	0x1
+ 795 02c5 20       		.byte	0x20
+ 796 02c6 00000000 		.4byte	.LFB37
+ 797 02ca 30000000 		.4byte	.LFE37-.LFB37
+ 798 02ce 01       		.uleb128 0x1
+ 799 02cf 9C       		.byte	0x9c
+ 800 02d0 E3020000 		.4byte	0x2e3
+ 801 02d4 10       		.uleb128 0x10
+ 802 02d5 B6040000 		.4byte	.LASF89
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 18
+
+
+ 803 02d9 01       		.byte	0x1
+ 804 02da 20       		.byte	0x20
+ 805 02db E3020000 		.4byte	0x2e3
+ 806 02df 02       		.uleb128 0x2
+ 807 02e0 91       		.byte	0x91
+ 808 02e1 74       		.sleb128 -12
+ 809 02e2 00       		.byte	0
+ 810 02e3 08       		.uleb128 0x8
+ 811 02e4 04       		.byte	0x4
+ 812 02e5 7A020000 		.4byte	0x27a
+ 813 02e9 0F       		.uleb128 0xf
+ 814 02ea 5C060000 		.4byte	.LASF72
+ 815 02ee 01       		.byte	0x1
+ 816 02ef 39       		.byte	0x39
+ 817 02f0 00000000 		.4byte	.LFB38
+ 818 02f4 FC010000 		.4byte	.LFE38-.LFB38
+ 819 02f8 01       		.uleb128 0x1
+ 820 02f9 9C       		.byte	0x9c
+ 821 02fa 57030000 		.4byte	0x357
+ 822 02fe 11       		.uleb128 0x11
+ 823 02ff 20020000 		.4byte	.LASF73
+ 824 0303 01       		.byte	0x1
+ 825 0304 3B       		.byte	0x3b
+ 826 0305 6B000000 		.4byte	0x6b
+ 827 0309 02       		.uleb128 0x2
+ 828 030a 91       		.byte	0x91
+ 829 030b 67       		.sleb128 -25
+ 830 030c 11       		.uleb128 0x11
+ 831 030d C5000000 		.4byte	.LASF74
+ 832 0311 01       		.byte	0x1
+ 833 0312 3C       		.byte	0x3c
+ 834 0313 57030000 		.4byte	0x357
+ 835 0317 03       		.uleb128 0x3
+ 836 0318 91       		.byte	0x91
+ 837 0319 5C       		.sleb128 -36
+ 838 031a 06       		.byte	0x6
+ 839 031b 11       		.uleb128 0x11
+ 840 031c 3F010000 		.4byte	.LASF75
+ 841 0320 01       		.byte	0x1
+ 842 0321 3D       		.byte	0x3d
+ 843 0322 77000000 		.4byte	0x77
+ 844 0326 02       		.uleb128 0x2
+ 845 0327 91       		.byte	0x91
+ 846 0328 64       		.sleb128 -28
+ 847 0329 11       		.uleb128 0x11
+ 848 032a 79010000 		.4byte	.LASF76
+ 849 032e 01       		.byte	0x1
+ 850 032f 3F       		.byte	0x3f
+ 851 0330 77000000 		.4byte	0x77
+ 852 0334 05       		.uleb128 0x5
+ 853 0335 03       		.byte	0x3
+ 854 0336 00000000 		.4byte	uartIdleCount.7221
+ 855 033a 11       		.uleb128 0x11
+ 856 033b FB070000 		.4byte	.LASF77
+ 857 033f 01       		.byte	0x1
+ 858 0340 41       		.byte	0x41
+ 859 0341 93010000 		.4byte	0x193
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 19
+
+
+ 860 0345 02       		.uleb128 0x2
+ 861 0346 91       		.byte	0x91
+ 862 0347 5A       		.sleb128 -38
+ 863 0348 11       		.uleb128 0x11
+ 864 0349 D1070000 		.4byte	.LASF78
+ 865 034d 01       		.byte	0x1
+ 866 034e 42       		.byte	0x42
+ 867 034f 4E020000 		.4byte	0x24e
+ 868 0353 02       		.uleb128 0x2
+ 869 0354 91       		.byte	0x91
+ 870 0355 4C       		.sleb128 -52
+ 871 0356 00       		.byte	0
+ 872 0357 12       		.uleb128 0x12
+ 873 0358 6B000000 		.4byte	0x6b
+ 874 035c 6A030000 		.4byte	0x36a
+ 875 0360 13       		.uleb128 0x13
+ 876 0361 B5000000 		.4byte	0xb5
+ 877 0365 03       		.uleb128 0x3
+ 878 0366 91       		.byte	0x91
+ 879 0367 60       		.sleb128 -32
+ 880 0368 06       		.byte	0x6
+ 881 0369 00       		.byte	0
+ 882 036a 14       		.uleb128 0x14
+ 883 036b A3060000 		.4byte	.LASF79
+ 884 036f 01       		.byte	0x1
+ 885 0370 8E       		.byte	0x8e
+ 886 0371 00000000 		.4byte	.LFB39
+ 887 0375 18000000 		.4byte	.LFE39-.LFB39
+ 888 0379 01       		.uleb128 0x1
+ 889 037a 9C       		.byte	0x9c
+ 890 037b 14       		.uleb128 0x14
+ 891 037c 02030000 		.4byte	.LASF80
+ 892 0380 01       		.byte	0x1
+ 893 0381 A1       		.byte	0xa1
+ 894 0382 00000000 		.4byte	.LFB40
+ 895 0386 18000000 		.4byte	.LFE40-.LFB40
+ 896 038a 01       		.uleb128 0x1
+ 897 038b 9C       		.byte	0x9c
+ 898 038c 15       		.uleb128 0x15
+ 899 038d B4030000 		.4byte	.LASF81
+ 900 0391 06       		.byte	0x6
+ 901 0392 A90A     		.2byte	0xaa9
+ 902 0394 B3020000 		.4byte	0x2b3
+ 903 0398 15       		.uleb128 0x15
+ 904 0399 3F020000 		.4byte	.LASF82
+ 905 039d 06       		.byte	0x6
+ 906 039e AA0A     		.2byte	0xaaa
+ 907 03a0 D5010000 		.4byte	0x1d5
+ 908 03a4 16       		.uleb128 0x16
+ 909 03a5 F3010000 		.4byte	.LASF83
+ 910 03a9 07       		.byte	0x7
+ 911 03aa 20       		.byte	0x20
+ 912 03ab 77000000 		.4byte	0x77
+ 913 03af 16       		.uleb128 0x16
+ 914 03b0 50010000 		.4byte	.LASF84
+ 915 03b4 07       		.byte	0x7
+ 916 03b5 21       		.byte	0x21
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 20
+
+
+ 917 03b6 77000000 		.4byte	0x77
+ 918 03ba 16       		.uleb128 0x16
+ 919 03bb A4040000 		.4byte	.LASF85
+ 920 03bf 07       		.byte	0x7
+ 921 03c0 22       		.byte	0x22
+ 922 03c1 77000000 		.4byte	0x77
+ 923 03c5 00       		.byte	0
+ 924              		.section	.debug_abbrev,"",%progbits
+ 925              	.Ldebug_abbrev0:
+ 926 0000 01       		.uleb128 0x1
+ 927 0001 11       		.uleb128 0x11
+ 928 0002 01       		.byte	0x1
+ 929 0003 25       		.uleb128 0x25
+ 930 0004 0E       		.uleb128 0xe
+ 931 0005 13       		.uleb128 0x13
+ 932 0006 0B       		.uleb128 0xb
+ 933 0007 03       		.uleb128 0x3
+ 934 0008 0E       		.uleb128 0xe
+ 935 0009 1B       		.uleb128 0x1b
+ 936 000a 0E       		.uleb128 0xe
+ 937 000b 55       		.uleb128 0x55
+ 938 000c 17       		.uleb128 0x17
+ 939 000d 11       		.uleb128 0x11
+ 940 000e 01       		.uleb128 0x1
+ 941 000f 10       		.uleb128 0x10
+ 942 0010 17       		.uleb128 0x17
+ 943 0011 00       		.byte	0
+ 944 0012 00       		.byte	0
+ 945 0013 02       		.uleb128 0x2
+ 946 0014 24       		.uleb128 0x24
+ 947 0015 00       		.byte	0
+ 948 0016 0B       		.uleb128 0xb
+ 949 0017 0B       		.uleb128 0xb
+ 950 0018 3E       		.uleb128 0x3e
+ 951 0019 0B       		.uleb128 0xb
+ 952 001a 03       		.uleb128 0x3
+ 953 001b 0E       		.uleb128 0xe
+ 954 001c 00       		.byte	0
+ 955 001d 00       		.byte	0
+ 956 001e 03       		.uleb128 0x3
+ 957 001f 24       		.uleb128 0x24
+ 958 0020 00       		.byte	0
+ 959 0021 0B       		.uleb128 0xb
+ 960 0022 0B       		.uleb128 0xb
+ 961 0023 3E       		.uleb128 0x3e
+ 962 0024 0B       		.uleb128 0xb
+ 963 0025 03       		.uleb128 0x3
+ 964 0026 08       		.uleb128 0x8
+ 965 0027 00       		.byte	0
+ 966 0028 00       		.byte	0
+ 967 0029 04       		.uleb128 0x4
+ 968 002a 16       		.uleb128 0x16
+ 969 002b 00       		.byte	0
+ 970 002c 03       		.uleb128 0x3
+ 971 002d 0E       		.uleb128 0xe
+ 972 002e 3A       		.uleb128 0x3a
+ 973 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 21
+
+
+ 974 0030 3B       		.uleb128 0x3b
+ 975 0031 05       		.uleb128 0x5
+ 976 0032 49       		.uleb128 0x49
+ 977 0033 13       		.uleb128 0x13
+ 978 0034 00       		.byte	0
+ 979 0035 00       		.byte	0
+ 980 0036 05       		.uleb128 0x5
+ 981 0037 35       		.uleb128 0x35
+ 982 0038 00       		.byte	0
+ 983 0039 49       		.uleb128 0x49
+ 984 003a 13       		.uleb128 0x13
+ 985 003b 00       		.byte	0
+ 986 003c 00       		.byte	0
+ 987 003d 06       		.uleb128 0x6
+ 988 003e 04       		.uleb128 0x4
+ 989 003f 01       		.byte	0x1
+ 990 0040 0B       		.uleb128 0xb
+ 991 0041 0B       		.uleb128 0xb
+ 992 0042 3A       		.uleb128 0x3a
+ 993 0043 0B       		.uleb128 0xb
+ 994 0044 3B       		.uleb128 0x3b
+ 995 0045 05       		.uleb128 0x5
+ 996 0046 01       		.uleb128 0x1
+ 997 0047 13       		.uleb128 0x13
+ 998 0048 00       		.byte	0
+ 999 0049 00       		.byte	0
+ 1000 004a 07       		.uleb128 0x7
+ 1001 004b 28       		.uleb128 0x28
+ 1002 004c 00       		.byte	0
+ 1003 004d 03       		.uleb128 0x3
+ 1004 004e 0E       		.uleb128 0xe
+ 1005 004f 1C       		.uleb128 0x1c
+ 1006 0050 0D       		.uleb128 0xd
+ 1007 0051 00       		.byte	0
+ 1008 0052 00       		.byte	0
+ 1009 0053 08       		.uleb128 0x8
+ 1010 0054 0F       		.uleb128 0xf
+ 1011 0055 00       		.byte	0
+ 1012 0056 0B       		.uleb128 0xb
+ 1013 0057 0B       		.uleb128 0xb
+ 1014 0058 49       		.uleb128 0x49
+ 1015 0059 13       		.uleb128 0x13
+ 1016 005a 00       		.byte	0
+ 1017 005b 00       		.byte	0
+ 1018 005c 09       		.uleb128 0x9
+ 1019 005d 13       		.uleb128 0x13
+ 1020 005e 01       		.byte	0x1
+ 1021 005f 0B       		.uleb128 0xb
+ 1022 0060 0B       		.uleb128 0xb
+ 1023 0061 3A       		.uleb128 0x3a
+ 1024 0062 0B       		.uleb128 0xb
+ 1025 0063 3B       		.uleb128 0x3b
+ 1026 0064 05       		.uleb128 0x5
+ 1027 0065 01       		.uleb128 0x1
+ 1028 0066 13       		.uleb128 0x13
+ 1029 0067 00       		.byte	0
+ 1030 0068 00       		.byte	0
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 22
+
+
+ 1031 0069 0A       		.uleb128 0xa
+ 1032 006a 0D       		.uleb128 0xd
+ 1033 006b 00       		.byte	0
+ 1034 006c 03       		.uleb128 0x3
+ 1035 006d 0E       		.uleb128 0xe
+ 1036 006e 3A       		.uleb128 0x3a
+ 1037 006f 0B       		.uleb128 0xb
+ 1038 0070 3B       		.uleb128 0x3b
+ 1039 0071 05       		.uleb128 0x5
+ 1040 0072 49       		.uleb128 0x49
+ 1041 0073 13       		.uleb128 0x13
+ 1042 0074 38       		.uleb128 0x38
+ 1043 0075 0B       		.uleb128 0xb
+ 1044 0076 00       		.byte	0
+ 1045 0077 00       		.byte	0
+ 1046 0078 0B       		.uleb128 0xb
+ 1047 0079 0D       		.uleb128 0xd
+ 1048 007a 00       		.byte	0
+ 1049 007b 03       		.uleb128 0x3
+ 1050 007c 08       		.uleb128 0x8
+ 1051 007d 3A       		.uleb128 0x3a
+ 1052 007e 0B       		.uleb128 0xb
+ 1053 007f 3B       		.uleb128 0x3b
+ 1054 0080 05       		.uleb128 0x5
+ 1055 0081 49       		.uleb128 0x49
+ 1056 0082 13       		.uleb128 0x13
+ 1057 0083 38       		.uleb128 0x38
+ 1058 0084 0B       		.uleb128 0xb
+ 1059 0085 00       		.byte	0
+ 1060 0086 00       		.byte	0
+ 1061 0087 0C       		.uleb128 0xc
+ 1062 0088 16       		.uleb128 0x16
+ 1063 0089 00       		.byte	0
+ 1064 008a 03       		.uleb128 0x3
+ 1065 008b 0E       		.uleb128 0xe
+ 1066 008c 3A       		.uleb128 0x3a
+ 1067 008d 0B       		.uleb128 0xb
+ 1068 008e 3B       		.uleb128 0x3b
+ 1069 008f 0B       		.uleb128 0xb
+ 1070 0090 49       		.uleb128 0x49
+ 1071 0091 13       		.uleb128 0x13
+ 1072 0092 00       		.byte	0
+ 1073 0093 00       		.byte	0
+ 1074 0094 0D       		.uleb128 0xd
+ 1075 0095 13       		.uleb128 0x13
+ 1076 0096 01       		.byte	0x1
+ 1077 0097 0B       		.uleb128 0xb
+ 1078 0098 0B       		.uleb128 0xb
+ 1079 0099 3A       		.uleb128 0x3a
+ 1080 009a 0B       		.uleb128 0xb
+ 1081 009b 3B       		.uleb128 0x3b
+ 1082 009c 0B       		.uleb128 0xb
+ 1083 009d 01       		.uleb128 0x1
+ 1084 009e 13       		.uleb128 0x13
+ 1085 009f 00       		.byte	0
+ 1086 00a0 00       		.byte	0
+ 1087 00a1 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 23
+
+
+ 1088 00a2 0D       		.uleb128 0xd
+ 1089 00a3 00       		.byte	0
+ 1090 00a4 03       		.uleb128 0x3
+ 1091 00a5 0E       		.uleb128 0xe
+ 1092 00a6 3A       		.uleb128 0x3a
+ 1093 00a7 0B       		.uleb128 0xb
+ 1094 00a8 3B       		.uleb128 0x3b
+ 1095 00a9 0B       		.uleb128 0xb
+ 1096 00aa 49       		.uleb128 0x49
+ 1097 00ab 13       		.uleb128 0x13
+ 1098 00ac 38       		.uleb128 0x38
+ 1099 00ad 0B       		.uleb128 0xb
+ 1100 00ae 00       		.byte	0
+ 1101 00af 00       		.byte	0
+ 1102 00b0 0F       		.uleb128 0xf
+ 1103 00b1 2E       		.uleb128 0x2e
+ 1104 00b2 01       		.byte	0x1
+ 1105 00b3 3F       		.uleb128 0x3f
+ 1106 00b4 19       		.uleb128 0x19
+ 1107 00b5 03       		.uleb128 0x3
+ 1108 00b6 0E       		.uleb128 0xe
+ 1109 00b7 3A       		.uleb128 0x3a
+ 1110 00b8 0B       		.uleb128 0xb
+ 1111 00b9 3B       		.uleb128 0x3b
+ 1112 00ba 0B       		.uleb128 0xb
+ 1113 00bb 27       		.uleb128 0x27
+ 1114 00bc 19       		.uleb128 0x19
+ 1115 00bd 11       		.uleb128 0x11
+ 1116 00be 01       		.uleb128 0x1
+ 1117 00bf 12       		.uleb128 0x12
+ 1118 00c0 06       		.uleb128 0x6
+ 1119 00c1 40       		.uleb128 0x40
+ 1120 00c2 18       		.uleb128 0x18
+ 1121 00c3 9642     		.uleb128 0x2116
+ 1122 00c5 19       		.uleb128 0x19
+ 1123 00c6 01       		.uleb128 0x1
+ 1124 00c7 13       		.uleb128 0x13
+ 1125 00c8 00       		.byte	0
+ 1126 00c9 00       		.byte	0
+ 1127 00ca 10       		.uleb128 0x10
+ 1128 00cb 05       		.uleb128 0x5
+ 1129 00cc 00       		.byte	0
+ 1130 00cd 03       		.uleb128 0x3
+ 1131 00ce 0E       		.uleb128 0xe
+ 1132 00cf 3A       		.uleb128 0x3a
+ 1133 00d0 0B       		.uleb128 0xb
+ 1134 00d1 3B       		.uleb128 0x3b
+ 1135 00d2 0B       		.uleb128 0xb
+ 1136 00d3 49       		.uleb128 0x49
+ 1137 00d4 13       		.uleb128 0x13
+ 1138 00d5 02       		.uleb128 0x2
+ 1139 00d6 18       		.uleb128 0x18
+ 1140 00d7 00       		.byte	0
+ 1141 00d8 00       		.byte	0
+ 1142 00d9 11       		.uleb128 0x11
+ 1143 00da 34       		.uleb128 0x34
+ 1144 00db 00       		.byte	0
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 24
+
+
+ 1145 00dc 03       		.uleb128 0x3
+ 1146 00dd 0E       		.uleb128 0xe
+ 1147 00de 3A       		.uleb128 0x3a
+ 1148 00df 0B       		.uleb128 0xb
+ 1149 00e0 3B       		.uleb128 0x3b
+ 1150 00e1 0B       		.uleb128 0xb
+ 1151 00e2 49       		.uleb128 0x49
+ 1152 00e3 13       		.uleb128 0x13
+ 1153 00e4 02       		.uleb128 0x2
+ 1154 00e5 18       		.uleb128 0x18
+ 1155 00e6 00       		.byte	0
+ 1156 00e7 00       		.byte	0
+ 1157 00e8 12       		.uleb128 0x12
+ 1158 00e9 01       		.uleb128 0x1
+ 1159 00ea 01       		.byte	0x1
+ 1160 00eb 49       		.uleb128 0x49
+ 1161 00ec 13       		.uleb128 0x13
+ 1162 00ed 01       		.uleb128 0x1
+ 1163 00ee 13       		.uleb128 0x13
+ 1164 00ef 00       		.byte	0
+ 1165 00f0 00       		.byte	0
+ 1166 00f1 13       		.uleb128 0x13
+ 1167 00f2 21       		.uleb128 0x21
+ 1168 00f3 00       		.byte	0
+ 1169 00f4 49       		.uleb128 0x49
+ 1170 00f5 13       		.uleb128 0x13
+ 1171 00f6 2F       		.uleb128 0x2f
+ 1172 00f7 18       		.uleb128 0x18
+ 1173 00f8 00       		.byte	0
+ 1174 00f9 00       		.byte	0
+ 1175 00fa 14       		.uleb128 0x14
+ 1176 00fb 2E       		.uleb128 0x2e
+ 1177 00fc 00       		.byte	0
+ 1178 00fd 3F       		.uleb128 0x3f
+ 1179 00fe 19       		.uleb128 0x19
+ 1180 00ff 03       		.uleb128 0x3
+ 1181 0100 0E       		.uleb128 0xe
+ 1182 0101 3A       		.uleb128 0x3a
+ 1183 0102 0B       		.uleb128 0xb
+ 1184 0103 3B       		.uleb128 0x3b
+ 1185 0104 0B       		.uleb128 0xb
+ 1186 0105 27       		.uleb128 0x27
+ 1187 0106 19       		.uleb128 0x19
+ 1188 0107 11       		.uleb128 0x11
+ 1189 0108 01       		.uleb128 0x1
+ 1190 0109 12       		.uleb128 0x12
+ 1191 010a 06       		.uleb128 0x6
+ 1192 010b 40       		.uleb128 0x40
+ 1193 010c 18       		.uleb128 0x18
+ 1194 010d 9742     		.uleb128 0x2117
+ 1195 010f 19       		.uleb128 0x19
+ 1196 0110 00       		.byte	0
+ 1197 0111 00       		.byte	0
+ 1198 0112 15       		.uleb128 0x15
+ 1199 0113 34       		.uleb128 0x34
+ 1200 0114 00       		.byte	0
+ 1201 0115 03       		.uleb128 0x3
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 25
+
+
+ 1202 0116 0E       		.uleb128 0xe
+ 1203 0117 3A       		.uleb128 0x3a
+ 1204 0118 0B       		.uleb128 0xb
+ 1205 0119 3B       		.uleb128 0x3b
+ 1206 011a 05       		.uleb128 0x5
+ 1207 011b 49       		.uleb128 0x49
+ 1208 011c 13       		.uleb128 0x13
+ 1209 011d 3F       		.uleb128 0x3f
+ 1210 011e 19       		.uleb128 0x19
+ 1211 011f 3C       		.uleb128 0x3c
+ 1212 0120 19       		.uleb128 0x19
+ 1213 0121 00       		.byte	0
+ 1214 0122 00       		.byte	0
+ 1215 0123 16       		.uleb128 0x16
+ 1216 0124 34       		.uleb128 0x34
+ 1217 0125 00       		.byte	0
+ 1218 0126 03       		.uleb128 0x3
+ 1219 0127 0E       		.uleb128 0xe
+ 1220 0128 3A       		.uleb128 0x3a
+ 1221 0129 0B       		.uleb128 0xb
+ 1222 012a 3B       		.uleb128 0x3b
+ 1223 012b 0B       		.uleb128 0xb
+ 1224 012c 49       		.uleb128 0x49
+ 1225 012d 13       		.uleb128 0x13
+ 1226 012e 3F       		.uleb128 0x3f
+ 1227 012f 19       		.uleb128 0x19
+ 1228 0130 3C       		.uleb128 0x3c
+ 1229 0131 19       		.uleb128 0x19
+ 1230 0132 00       		.byte	0
+ 1231 0133 00       		.byte	0
+ 1232 0134 00       		.byte	0
+ 1233              		.section	.debug_aranges,"",%progbits
+ 1234 0000 34000000 		.4byte	0x34
+ 1235 0004 0200     		.2byte	0x2
+ 1236 0006 00000000 		.4byte	.Ldebug_info0
+ 1237 000a 04       		.byte	0x4
+ 1238 000b 00       		.byte	0
+ 1239 000c 0000     		.2byte	0
+ 1240 000e 0000     		.2byte	0
+ 1241 0010 00000000 		.4byte	.LFB37
+ 1242 0014 30000000 		.4byte	.LFE37-.LFB37
+ 1243 0018 00000000 		.4byte	.LFB38
+ 1244 001c FC010000 		.4byte	.LFE38-.LFB38
+ 1245 0020 00000000 		.4byte	.LFB39
+ 1246 0024 18000000 		.4byte	.LFE39-.LFB39
+ 1247 0028 00000000 		.4byte	.LFB40
+ 1248 002c 18000000 		.4byte	.LFE40-.LFB40
+ 1249 0030 00000000 		.4byte	0
+ 1250 0034 00000000 		.4byte	0
+ 1251              		.section	.debug_ranges,"",%progbits
+ 1252              	.Ldebug_ranges0:
+ 1253 0000 00000000 		.4byte	.LFB37
+ 1254 0004 30000000 		.4byte	.LFE37
+ 1255 0008 00000000 		.4byte	.LFB38
+ 1256 000c FC010000 		.4byte	.LFE38
+ 1257 0010 00000000 		.4byte	.LFB39
+ 1258 0014 18000000 		.4byte	.LFE39
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 26
+
+
+ 1259 0018 00000000 		.4byte	.LFB40
+ 1260 001c 18000000 		.4byte	.LFE40
+ 1261 0020 00000000 		.4byte	0
+ 1262 0024 00000000 		.4byte	0
+ 1263              		.section	.debug_line,"",%progbits
+ 1264              	.Ldebug_line0:
+ 1265 0000 2E010000 		.section	.debug_str,"MS",%progbits,1
+ 1265      0200A400 
+ 1265      00000201 
+ 1265      FB0E0D00 
+ 1265      01010101 
+ 1266              	.LASF32:
+ 1267 0000 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 1267      455F4552 
+ 1267      524F525F 
+ 1267      4C324341 
+ 1267      505F5053 
+ 1268              	.LASF31:
+ 1269 0025 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 1269      455F4552 
+ 1269      524F525F 
+ 1269      4C324341 
+ 1269      505F5053 
+ 1270              	.LASF62:
+ 1271 004e 68616E64 		.ascii	"handleValPair\000"
+ 1271      6C655661 
+ 1271      6C506169 
+ 1271      7200
+ 1272              	.LASF88:
+ 1273 005c 443A5C77 		.ascii	"D:\\work\\LoRa\\LoraMote1\\UART_to_BLE_central\\UAR"
+ 1273      6F726B5C 
+ 1273      4C6F5261 
+ 1273      5C4C6F72 
+ 1273      614D6F74 
+ 1274 008a 545F746F 		.ascii	"T_to_BLE_central.cydsn\000"
+ 1274      5F424C45 
+ 1274      5F63656E 
+ 1274      7472616C 
+ 1274      2E637964 
+ 1275              	.LASF34:
+ 1276 00a1 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 1276      455F4552 
+ 1276      524F525F 
+ 1276      4C324341 
+ 1276      505F4348 
+ 1277              	.LASF74:
+ 1278 00c5 75617274 		.ascii	"uartTxData\000"
+ 1278      54784461 
+ 1278      746100
+ 1279              	.LASF2:
+ 1280 00d0 73686F72 		.ascii	"short int\000"
+ 1280      7420696E 
+ 1280      7400
+ 1281              	.LASF16:
+ 1282 00da 73697A65 		.ascii	"sizetype\000"
+ 1282      74797065 
+ 1282      00
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 27
+
+
+ 1283              	.LASF61:
+ 1284 00e3 636F6E6E 		.ascii	"connHandle\000"
+ 1284      48616E64 
+ 1284      6C6500
+ 1285              	.LASF17:
+ 1286 00ee 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 1286      455F4552 
+ 1286      524F525F 
+ 1286      4F4B00
+ 1287              	.LASF38:
+ 1288 00fd 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 1288      455F4552 
+ 1288      524F525F 
+ 1288      464C4153 
+ 1288      485F5752 
+ 1289              	.LASF40:
+ 1290 0122 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 1290      455F4552 
+ 1290      524F525F 
+ 1290      48415244 
+ 1290      57415245 
+ 1291              	.LASF75:
+ 1292 013f 75617274 		.ascii	"uartTxDataLength\000"
+ 1292      54784461 
+ 1292      74614C65 
+ 1292      6E677468 
+ 1292      00
+ 1293              	.LASF84:
+ 1294 0150 74784368 		.ascii	"txCharHandle\000"
+ 1294      61724861 
+ 1294      6E646C65 
+ 1294      00
+ 1295              	.LASF51:
+ 1296 015d 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 1296      455F4741 
+ 1296      54545F44 
+ 1296      425F4154 
+ 1296      54525F48 
+ 1297              	.LASF76:
+ 1298 0179 75617274 		.ascii	"uartIdleCount\000"
+ 1298      49646C65 
+ 1298      436F756E 
+ 1298      7400
+ 1299              	.LASF64:
+ 1300 0187 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 1300      455F5354 
+ 1300      4154455F 
+ 1300      53544F50 
+ 1300      50454400 
+ 1301              	.LASF18:
+ 1302 019b 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 1302      455F4552 
+ 1302      524F525F 
+ 1302      494E5641 
+ 1302      4C49445F 
+ 1303              	.LASF22:
+ 1304 01b9 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 28
+
+
+ 1304      455F4552 
+ 1304      524F525F 
+ 1304      4F4F425F 
+ 1304      4E4F545F 
+ 1305              	.LASF57:
+ 1306 01d7 76616C75 		.ascii	"value\000"
+ 1306      6500
+ 1307              	.LASF66:
+ 1308 01dd 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 1308      455F5354 
+ 1308      4154455F 
+ 1308      434F4E4E 
+ 1308      45435445 
+ 1309              	.LASF83:
+ 1310 01f3 6D747553 		.ascii	"mtuSize\000"
+ 1310      697A6500 
+ 1311              	.LASF10:
+ 1312 01fb 75696E74 		.ascii	"uint16\000"
+ 1312      313600
+ 1313              	.LASF19:
+ 1314 0202 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 1314      455F4552 
+ 1314      524F525F 
+ 1314      494E5641 
+ 1314      4C49445F 
+ 1315              	.LASF73:
+ 1316 0220 696E6465 		.ascii	"index\000"
+ 1316      7800
+ 1317              	.LASF9:
+ 1318 0226 75696E74 		.ascii	"uint8\000"
+ 1318      3800
+ 1319              	.LASF50:
+ 1320 022c 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 1320      455F4150 
+ 1320      495F5245 
+ 1320      53554C54 
+ 1320      5F5400
+ 1321              	.LASF82:
+ 1322 023f 6379426C 		.ascii	"cyBle_connHandle\000"
+ 1322      655F636F 
+ 1322      6E6E4861 
+ 1322      6E646C65 
+ 1322      00
+ 1323              	.LASF23:
+ 1324 0250 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 1324      455F4552 
+ 1324      524F525F 
+ 1324      4E4F5F43 
+ 1324      4F4E4E45 
+ 1325              	.LASF52:
+ 1326 026a 62644861 		.ascii	"bdHandle\000"
+ 1326      6E646C65 
+ 1326      00
+ 1327              	.LASF27:
+ 1328 0273 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 1328      455F4552 
+ 1328      524F525F 
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 29
+
+
+ 1328      54585F50 
+ 1328      4F574552 
+ 1329              	.LASF21:
+ 1330 028d 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 1330      455F4552 
+ 1330      524F525F 
+ 1330      494E5355 
+ 1330      46464943 
+ 1331              	.LASF12:
+ 1332 02b0 666C6F61 		.ascii	"float\000"
+ 1332      7400
+ 1333              	.LASF67:
+ 1334 02b6 4359424C 		.ascii	"CYBLE_STATE_SCANNING\000"
+ 1334      455F5354 
+ 1334      4154455F 
+ 1334      5343414E 
+ 1334      4E494E47 
+ 1335              	.LASF6:
+ 1336 02cb 6C6F6E67 		.ascii	"long long int\000"
+ 1336      206C6F6E 
+ 1336      6720696E 
+ 1336      7400
+ 1337              	.LASF28:
+ 1338 02d9 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 1338      455F4552 
+ 1338      524F525F 
+ 1338      42545F4F 
+ 1338      4E5F4E4F 
+ 1339              	.LASF4:
+ 1340 02f9 6C6F6E67 		.ascii	"long int\000"
+ 1340      20696E74 
+ 1340      00
+ 1341              	.LASF80:
+ 1342 0302 456E6162 		.ascii	"EnableUartRxInt\000"
+ 1342      6C655561 
+ 1342      72745278 
+ 1342      496E7400 
+ 1343              	.LASF25:
+ 1344 0312 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 1344      455F4552 
+ 1344      524F525F 
+ 1344      52455045 
+ 1344      41544544 
+ 1345              	.LASF60:
+ 1346 0330 4359424C 		.ascii	"CYBLE_GATTC_WRITE_CMD_REQ_T\000"
+ 1346      455F4741 
+ 1346      5454435F 
+ 1346      57524954 
+ 1346      455F434D 
+ 1347              	.LASF24:
+ 1348 034c 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 1348      455F4552 
+ 1348      524F525F 
+ 1348      4E4F5F44 
+ 1348      45564943 
+ 1349              	.LASF63:
+ 1350 0369 4359424C 		.ascii	"CYBLE_GATTC_HANDLE_VALUE_NTF_PARAM_T\000"
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 30
+
+
+ 1350      455F4741 
+ 1350      5454435F 
+ 1350      48414E44 
+ 1350      4C455F56 
+ 1351              	.LASF1:
+ 1352 038e 756E7369 		.ascii	"unsigned char\000"
+ 1352      676E6564 
+ 1352      20636861 
+ 1352      7200
+ 1353              	.LASF42:
+ 1354 039c 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 1354      455F4552 
+ 1354      524F525F 
+ 1354      464C4153 
+ 1354      485F5752 
+ 1355              	.LASF81:
+ 1356 03b4 6379426C 		.ascii	"cyBle_state\000"
+ 1356      655F7374 
+ 1356      61746500 
+ 1357              	.LASF0:
+ 1358 03c0 7369676E 		.ascii	"signed char\000"
+ 1358      65642063 
+ 1358      68617200 
+ 1359              	.LASF7:
+ 1360 03cc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1360      206C6F6E 
+ 1360      6720756E 
+ 1360      7369676E 
+ 1360      65642069 
+ 1361              	.LASF29:
+ 1362 03e3 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 1362      455F4552 
+ 1362      524F525F 
+ 1362      5345435F 
+ 1362      4641494C 
+ 1363              	.LASF26:
+ 1364 03fa 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 1364      455F4552 
+ 1364      524F525F 
+ 1364      4741505F 
+ 1364      524F4C45 
+ 1365              	.LASF8:
+ 1366 040f 756E7369 		.ascii	"unsigned int\000"
+ 1366      676E6564 
+ 1366      20696E74 
+ 1366      00
+ 1367              	.LASF30:
+ 1368 041c 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 1368      455F4552 
+ 1368      524F525F 
+ 1368      4C324341 
+ 1368      505F5053 
+ 1369              	.LASF69:
+ 1370 0441 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 1370      455F5354 
+ 1370      4154455F 
+ 1370      44495343 
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 31
+
+
+ 1370      4F4E4E45 
+ 1371              	.LASF70:
+ 1372 045a 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 1372      455F5354 
+ 1372      4154455F 
+ 1372      5400
+ 1373              	.LASF15:
+ 1374 0468 72656733 		.ascii	"reg32\000"
+ 1374      3200
+ 1375              	.LASF47:
+ 1376 046e 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 1376      455F4552 
+ 1376      524F525F 
+ 1376      43484152 
+ 1376      5F49535F 
+ 1377              	.LASF3:
+ 1378 0491 73686F72 		.ascii	"short unsigned int\000"
+ 1378      7420756E 
+ 1378      7369676E 
+ 1378      65642069 
+ 1378      6E7400
+ 1379              	.LASF85:
+ 1380 04a4 72784368 		.ascii	"rxCharHandle\000"
+ 1380      61724861 
+ 1380      6E646C65 
+ 1380      00
+ 1381              	.LASF14:
+ 1382 04b1 63686172 		.ascii	"char\000"
+ 1382      00
+ 1383              	.LASF89:
+ 1384 04b6 75617274 		.ascii	"uartRxDataNotification\000"
+ 1384      52784461 
+ 1384      74614E6F 
+ 1384      74696669 
+ 1384      63617469 
+ 1385              	.LASF49:
+ 1386 04cd 4359424C 		.ascii	"CYBLE_ERROR_STACK_BUSY\000"
+ 1386      455F4552 
+ 1386      524F525F 
+ 1386      53544143 
+ 1386      4B5F4255 
+ 1387              	.LASF56:
+ 1388 04e4 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 1388      455F4741 
+ 1388      54545F56 
+ 1388      414C5545 
+ 1388      5F5400
+ 1389              	.LASF86:
+ 1390 04f7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1390      4320342E 
+ 1390      392E3320 
+ 1390      32303135 
+ 1390      30333033 
+ 1391 052a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1391      20726576 
+ 1391      6973696F 
+ 1391      6E203232 
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 32
+
+
+ 1391      31323230 
+ 1392 055d 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1392      66756E63 
+ 1392      74696F6E 
+ 1392      2D736563 
+ 1392      74696F6E 
+ 1393              	.LASF43:
+ 1394 0585 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 1394      455F4552 
+ 1394      524F525F 
+ 1394      434F4E54 
+ 1394      524F4C4C 
+ 1395              	.LASF65:
+ 1396 05a1 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 1396      455F5354 
+ 1396      4154455F 
+ 1396      494E4954 
+ 1396      49414C49 
+ 1397              	.LASF87:
+ 1398 05ba 6170705F 		.ascii	"app_UART.c\000"
+ 1398      55415254 
+ 1398      2E6300
+ 1399              	.LASF20:
+ 1400 05c5 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 1400      455F4552 
+ 1400      524F525F 
+ 1400      4D454D4F 
+ 1400      52595F41 
+ 1401              	.LASF71:
+ 1402 05ea 48616E64 		.ascii	"HandleUartRxTraffic\000"
+ 1402      6C655561 
+ 1402      72745278 
+ 1402      54726166 
+ 1402      66696300 
+ 1403              	.LASF41:
+ 1404 05fe 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 1404      455F4552 
+ 1404      524F525F 
+ 1404      554E5355 
+ 1404      50504F52 
+ 1405              	.LASF11:
+ 1406 0631 75696E74 		.ascii	"uint32\000"
+ 1406      333200
+ 1407              	.LASF5:
+ 1408 0638 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1408      20756E73 
+ 1408      69676E65 
+ 1408      6420696E 
+ 1408      7400
+ 1409              	.LASF58:
+ 1410 064a 61747472 		.ascii	"attrHandle\000"
+ 1410      48616E64 
+ 1410      6C6500
+ 1411              	.LASF13:
+ 1412 0655 646F7562 		.ascii	"double\000"
+ 1412      6C6500
+ 1413              	.LASF72:
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 33
+
+
+ 1414 065c 48616E64 		.ascii	"HandleUartTxTraffic\000"
+ 1414      6C655561 
+ 1414      72745478 
+ 1414      54726166 
+ 1414      66696300 
+ 1415              	.LASF54:
+ 1416 0670 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 1416      455F434F 
+ 1416      4E4E5F48 
+ 1416      414E444C 
+ 1416      455F5400 
+ 1417              	.LASF59:
+ 1418 0684 4359424C 		.ascii	"CYBLE_GATT_HANDLE_VALUE_PAIR_T\000"
+ 1418      455F4741 
+ 1418      54545F48 
+ 1418      414E444C 
+ 1418      455F5641 
+ 1419              	.LASF79:
+ 1420 06a3 44697361 		.ascii	"DisableUartRxInt\000"
+ 1420      626C6555 
+ 1420      61727452 
+ 1420      78496E74 
+ 1420      00
+ 1421              	.LASF35:
+ 1422 06b4 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 1422      455F4552 
+ 1422      524F525F 
+ 1422      4C324341 
+ 1422      505F5053 
+ 1423              	.LASF45:
+ 1424 06d7 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 1424      455F4552 
+ 1424      524F525F 
+ 1424      4E54465F 
+ 1424      44495341 
+ 1425              	.LASF37:
+ 1426 06f0 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 1426      455F4552 
+ 1426      524F525F 
+ 1426      44455649 
+ 1426      43455F41 
+ 1427              	.LASF39:
+ 1428 0712 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 1428      455F4552 
+ 1428      524F525F 
+ 1428      4D49435F 
+ 1428      41555448 
+ 1429              	.LASF44:
+ 1430 072e 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 1430      455F4552 
+ 1430      524F525F 
+ 1430      4D415800 
+ 1431              	.LASF48:
+ 1432 073e 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 1432      455F4552 
+ 1432      524F525F 
+ 1432      494E5641 
+ARM GAS  C:\Users\Julian\AppData\Local\Temp\ccCg7Tbi.s 			page 34
+
+
+ 1432      4C49445F 
+ 1433              	.LASF55:
+ 1434 0758 61637475 		.ascii	"actualLen\000"
+ 1434      616C4C65 
+ 1434      6E00
+ 1435              	.LASF36:
+ 1436 0762 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 1436      455F4552 
+ 1436      524F525F 
+ 1436      47415454 
+ 1436      5F44425F 
+ 1437              	.LASF33:
+ 1438 078a 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 1438      455F4552 
+ 1438      524F525F 
+ 1438      4C324341 
+ 1438      505F434F 
+ 1439              	.LASF46:
+ 1440 07b8 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 1440      455F4552 
+ 1440      524F525F 
+ 1440      494E445F 
+ 1440      44495341 
+ 1441              	.LASF78:
+ 1442 07d1 75617274 		.ascii	"uartTxDataWriteCmd\000"
+ 1442      54784461 
+ 1442      74615772 
+ 1442      69746543 
+ 1442      6D6400
+ 1443              	.LASF68:
+ 1444 07e4 4359424C 		.ascii	"CYBLE_STATE_CONNECTING\000"
+ 1444      455F5354 
+ 1444      4154455F 
+ 1444      434F4E4E 
+ 1444      45435449 
+ 1445              	.LASF77:
+ 1446 07fb 626C6541 		.ascii	"bleApiResult\000"
+ 1446      70695265 
+ 1446      73756C74 
+ 1446      00
+ 1447              	.LASF53:
+ 1448 0808 61747449 		.ascii	"attId\000"
+ 1448      6400
+ 1449              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
