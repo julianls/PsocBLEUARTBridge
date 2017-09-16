@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="UART_to_BLE_central\UART_to_BLE_central\Source Files\main.c">
+<ExpandedNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\TopDesign</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Pins</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Analog</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Clocks</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Interrupts</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\System</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Directives</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Flash Security</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_Ble.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_LED.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_UART.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\main.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_Ble.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_LED.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_UART.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\main.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_custom.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_custom.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_eventHandler.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_eventHandler.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_gatt.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_gatt.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_INT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_PVT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_PVT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_Stack.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_STACK_PVT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackGap.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackGatt.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackGattClient.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackGattDb.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackGattServer.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackHostMain.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_StackL2cap.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE_bless_isr</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE_bless_isr\BLE_bless_isr.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE_bless_isr\BLE_bless_isr.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Conn_LED</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Conn_LED\Conn_LED.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Conn_LED\Conn_LED.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Conn_LED\Conn_LED_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Conn_LED\Conn_LED_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cm0gcc.ld</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\Cm0Iar.icf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\Cm0RealView.scat</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\Cm0Start.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cmsis_armcc.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cmsis_gcc.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\core_cm0.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\core_cm0_psoc4.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\core_cmFunc.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\core_cmInstr.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyBootAsmGnu.s</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyBootAsmIar.s</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyBootAsmRv.s</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyFlash.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyFlash.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyLib.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\CyLib.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cypins.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cyPm.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cyPm.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cytypes.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_boot\cyutils.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_lfclk</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_lfclk\CyLFClk.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cy_lfclk\CyLFClk.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Scan_LED</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Scan_LED\Scan_LED.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Scan_LED\Scan_LED.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Scan_LED\Scan_LED_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\Scan_LED\Scan_LED_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_BOOT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_BOOT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_PINS.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_PVT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_SPI_UART.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_SPI_UART.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_SPI_UART_INT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_SPI_UART_PVT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_UART.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART\UART_UART_BOOT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_cts</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_cts\UART_cts.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_cts\UART_cts.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_cts\UART_cts_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_cts\UART_cts_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rts</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rts\UART_rts.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rts\UART_rts.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rts\UART_rts_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rts\UART_rts_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rx</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rx\UART_rx.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rx\UART_rx.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rx\UART_rx_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_rx\UART_rx_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCB_IRQ</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCB_IRQ\UART_SCB_IRQ.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCB_IRQ\UART_SCB_IRQ.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCBCLK</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCBCLK\UART_SCBCLK.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_SCBCLK\UART_SCBCLK.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_tx</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_tx\UART_tx.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_tx\UART_tx.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_tx\UART_tx_aliases.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\UART_tx\UART_tx_PM.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cycodeshareexport.ld</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cycodeshareimport.ld</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cycodeshareimport.scat</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cydevice_trm.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfitter.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfitter_cfg.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfitter_cfg.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfittergnu.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfitteriar.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cyfitterrv.inc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\cymetadata.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\TopDesign</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Pins</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Analog</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Clocks</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Interrupts</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\System</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Directives</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.cydwr\Flash Security</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_Ble.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_LED.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\app_UART.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Header Files\main.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_Ble.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_LED.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\app_UART.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Source Files\main.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_custom.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_custom.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_eventHandler.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_eventHandler.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_gatt.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_gatt.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_INT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_PVT.c</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_HAL_PVT.h</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Generated_Source\PSoC4\BLE\BLE_Stack.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>UART_to_BLE_central</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>UART_to_BLE_central</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_Ble.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_bless_isr.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_custom.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_eventHandler.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_gatt.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_HAL_INT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_HAL_PVT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Conn_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Conn_LED_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLFClk.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Scan_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Scan_LED_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_BOOT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_cts.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_cts_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rts.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rts_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rx.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rx_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SCB_IRQ.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SCBCLK.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SPI_UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_SPI_UART_INT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_tx.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_tx_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_UART_BOOT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\UART_to_BLE_central.elf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\UART_to_BLE_central.hex</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\UART_to_BLE_central.map</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.gpdsc</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central.rpt</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\UART_to_BLE_central_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_Ble.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\app_UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_bless_isr.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_custom.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_eventHandler.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_gatt.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_HAL_INT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\BLE_HAL_PVT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Conn_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Conn_LED_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLFClk.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Scan_LED.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\Scan_LED_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_BOOT.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_cts.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_cts_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_PM.lst</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\CortexM0\ARM_GCC_493\Debug\Listing Files\UART_rts.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\PSoC 4 Architecture TRM</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\PRoC BLE Family Datasheet</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides\cy_boot_v5_50</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides\cy_lfclk_v1_10</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\BLE_v3_30.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Capacitor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\cy_pins_v2_20</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Gnd_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Inductor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\LED_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\LED_v1_0\LED_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Power_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Power_v1_0\Power_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Resistor_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\SCB_P4_v3_20.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\PSoC 4 Architecture TRM</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\PRoC BLE Family Datasheet</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides\cy_boot_v5_50</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\System Reference Guides\cy_lfclk_v1_10</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\BLE_v3_30.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Capacitor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\cy_pins_v2_20</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Gnd_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Inductor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\LED_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\LED_v1_0\LED_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Power_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Power_v1_0\Power_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Resistor_v1_0</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>UART_to_BLE_central\UART_to_BLE_central\SCB_P4_v3_20.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\UART_to_BLE_central.cydsn\UART_to_BLE_central.cydwr" />
+<name v=".\UART_to_BLE_central.cydsn\app_Ble.h" />
+<name v=".\UART_to_BLE_central.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\UART_to_BLE_central.cydsn\main.c" />
+<name v=".\UART_to_BLE_central.cydsn\app_UART.c" />
+<name v=".\UART_to_BLE_central.cydsn\app_Ble.c" />
+<name v=".\UART_to_BLE_central.cydsn\app_UART.h" />
+<name v=".\UART_to_BLE_central.cydsn\Generated_Source\PSoC4\BLE_HAL_PVT.c" />
+<name v=".\UART_to_BLE_central.cydsn\Generated_Source\PSoC4\BLE_HAL_PVT.h" />
+<name v=".\UART_to_BLE_central.cydsn\Generated_Source\PSoC4\UART.c" />
+<name v=".\UART_to_BLE_central.cydsn\Generated_Source\PSoC4\BLE.c" />
+<name v=".\UART_to_BLE_central.cydsn\app_LED.c" />
+<name v=".\UART_to_BLE_central.cydsn\Generated_Source\PSoC4\UART_SPI_UART_INT.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1030, 495" SelectedTabbedMdiWindow="4b5491ef-98f5-4cc9-8fe8-4494d75aa6e1"><DocumentWindow Key="201524ad-cb42-4a6e-a07d-29c5cb4bb253" Guid="e7e09ab0-5d3f-45c1-bc3d-8784030ea9fc" /><DocumentWindow Key="71ea58cd-88cd-4335-aed8-b89d8f2c39a9" Guid="e85dc95f-942c-4b6d-9653-4d30e24f9d29" /><DocumentWindow Key="aec22827-fa83-4c0a-8263-42a7ca34102f" Guid="fe7ad503-f886-403e-8451-5899f238b5c8" /><DocumentWindow Key="d21c94d8-739e-4a09-a918-8d0815ce1d05" Guid="01836ef9-d0c9-4217-89b9-3cee8faa8689" /><DocumentWindow Key="1c1a2c9c-d9a3-4c2e-94f5-1631c16238b2" Guid="23e85d66-002f-415b-8c6a-cbe01895777c" /><DocumentWindow Key="5c707717-367e-43a2-8d6d-1e9a98eb2d13" Guid="8788675e-9c34-4e8b-949f-7db6ef6336a4" /><DocumentWindow Key="9a9bcf55-5a0f-47dc-8c50-b054610f6393" Guid="15a3b8cb-4083-4385-b9ac-ddd093bd904a" /><DocumentWindow Key="3d85c323-68c9-46f6-b26d-9e1830c5e080" Guid="a7c8f076-4443-4b7c-9990-a40d95cbb37e" /><DocumentWindow Key="35c08220-4c64-4e54-883e-b15f12cb3f8c" Guid="38eb7bc7-20cc-4417-81b4-52b36cc52f9a" /><DocumentWindow Key="b864f1a9-c796-481c-a58f-e54c0033be65" Guid="3b472f40-c442-4fc8-98ef-d79e8f6e2414" /><DocumentWindow Key="9082009b-7546-427b-b0ec-46eab43f897a" Guid="dbb4fad1-d632-4197-9b51-d61e88c54a9b" /><DocumentWindow Key="b27abd00-95ef-47c0-8942-04c39b8d9088" Guid="872dcbaa-dae8-455b-874a-e26cc8ae46c1" /><DocumentWindow Key="169065d9-562d-4fc7-811a-1502e0df9f9d" Guid="4b5491ef-98f5-4cc9-8fe8-4494d75aa6e1" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="49bb1ac8-59ae-453b-864d-e93c5831e6e8" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
